@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    background-clip: content-box;
+    width: 100%;
+    height: 100%;
+  }
+
+html, body {
+  margin: 0;
+  align-items: stretch;
+}
+
+div {
+  border: 1px solid grey;
+}
+
+.main {
+  border: 0;
+}
+
+.block {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+}
+
+.inline {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  height: auto;
+}
+
+.main > .inline {
+  height: 80%;
+}
+
+.header {
+  height: auto;
+  text-align: center;
+  background-color: rgba(255, 238, 0, 0.398);
+}
+
+.body {
+  height: auto;
+  background-color: rgba(0, 174, 255, 0.398);
+}
+
+.log {
+  height: auto;
+  padding: 0;
+  height: 20%;
+}
+
+.log > .body {
+  overflow: auto;
+}
+
+.myproducts {
+  width: 150%;
+  /* height: 35%; */
+  overflow: auto;
+}
+
+.search {
+  /* height: 35%; */
+  overflow: auto;
+}
+
+#query {
+  height: 30px;
+}
+
+
+
+/* 검색어 입력 */
+.textbox {
+  position: relative;
+  height: auto;
+}
+.textbox label {
+  position: absolute;
+  text-align: center;
+  padding: 3px;
+  color: #999;
+  cursor: text;
+}
+
+.itemDto {
+  margin: 0 auto;
+  position: relative;
+  padding: 10px;
+  max-width: 200px;
+  height: auto;
+  background-color: rgba(126, 255, 114, 0.289);
+}
+
+.itemDto button {
+  cursor: pointer;
+  height: auto;
+  width: auto;
+  position: absolute;
+  padding: 0;
+  top: 15px;
+  right: 15px;
+  background-color: rgb(255, 255, 255);
+}
+.itemDto .check {
+  position: relative;
+  display: inline;
+  float: left;
+  top: 0;
+  left: 0;
+}
+
+.title {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.lowprice {
+  background-clip:border-box;
+  height: fit-content;
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.357);
+}
+
+
+.price {
+  height: auto;
+  text-align: right;
+}

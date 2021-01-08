@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="basic.js"></script>
+
+    <title>포트폴리오</title>
+</head>
+
+<body>
+
+    <!-- 사이드바 시작 -->
+    <div class="side col">
+        <!-- 프로필 시작 -->
+        <button type="button" class="btn btn-lg" data-bs-toggle="popover" title="백승호" data-bs-content="고졸
+            경력 없음
+            운동 좋아함
+            010-2214-9292
+            ">
+            <img style="border-radius: 50%!important;" class="flex-fill"
+                src="https://avatars3.githubusercontent.com/u/50126248?s=400&amp;u=a8ee97fb885621d65e603383f6eb77794e91c081&amp;v=4"
+                width="100%" height="100%" alt="myface">
+        </button>
+        <!-- 프로필 끝 -->
+
+        <!-- 포폴 메뉴 버튼 시작 -->
+        <div class="d-flex align-items-start">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical"
+                style="margin-left: 10px;">
+                <a class="nav-link active" id="v-pills-1-tab" data-bs-toggle="pill" href="#v-pills-1" role="tab"
+                    aria-controls="v-pills-1" aria-selected="true">
+                    1. 회원가입
+                </a>
+                <a class="nav-link" id="v-pills-2-tab" data-bs-toggle="pill" href="#v-pills-2" role="tab"
+                    aria-controls="v-pills-2" aria-selected="false">
+                    2. 로그인
+                </a>
+                <a class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" href="#v-pills-3" role="tab"
+                    aria-controls="v-pills-3" aria-selected="false">
+                    3. 개구리 김치
+                </a>
+                <a class="nav-link" id="v-pills-4-tab" data-bs-toggle="pill" href="#v-pills-4" role="tab"
+                    aria-controls="v-pills-4" aria-selected="false">
+                    4. 고구마 청국장
+                </a>
+            </div>
+        </div>
+        <!-- 포폴 메뉴 버튼 끝 -->        
+    </div>
+    <!-- 사이드바 끝 -->
+
+    <!-- 포폴 본문 시작 -->
+    <div class="main">
+
+        <!-- 상세보기 시작 -->
+        <div>
+            <!-- 상세보기 확장/축소 내용 시작 -->
+            <div class="collapse justify-content-center" id="more">
+                <div id="more-box" class="card card-body">
+
+                    <!-- 상세보기 본문 버튼 시작 -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="more-api-tab" data-bs-toggle="tab" href="#more-api"
+                                role="tab" aria-controls="more-api" aria-selected="true">API</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="more-log-tab" data-bs-toggle="tab" href="#more-log" role="tab"
+                                aria-controls="more-log" aria-selected="false">Log</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="more-review-tab" data-bs-toggle="tab" href="#more-review" role="tab"
+                                aria-controls="more-review" aria-selected="false">후기</a>
+                        </li>
+                    </ul>
+                    <!-- 상세보기 본문 버튼 끝 -->
+
+                    <!-- 상세보기 본문 시작-->
+                    <div class="tab-content" id="myTabContent">
+                        <!-- api 상세 내용 -->
+                        <div class="tab-pane fade show active" id="more-api" role="tabpanel"
+                            aria-labelledby="more-api-tab"></div>
+                        <!-- log 현황 -->
+                        <div class="tab-pane fade" id="more-log" role="tabpanel" aria-labelledby="more-log-tab"></div>
+                        <!-- 후기 -->
+                        <div class="tab-pane fade" id="more-review" role="tabpanel" aria-labelledby="more-review-tab">
+                        </div>
+                    </div>
+                    <!-- 상세보기 본문 끝-->
+
+                </div>
+            </div>
+            <!-- 상세보기 확장/축소 내용 끝 -->
+
+
+            <!-- 상세보기 확장/축소 버튼 시작-->
+            <p class="row justify-content-center m-1">
+                <a class="btn btn-outline-primary col-2" data-bs-toggle="collapse" href="#more" role="button"
+                    aria-expanded="false" aria-controls="more">
+                    상세
+                </a>
+            </p>
+            <!-- 상세보기 확장/축소 버튼 끝-->
+        </div>
+        <!-- 상세보기 끝 -->
+
+
+
+
+        <!-- 구동 화면 시작 -->
+        <div class="tab-content border rounded-start" id="v-pills-tabContent">
+
+            <div class="tab-pane block fade show active position-relative" id="v-pills-1" role="tabpanel"
+                aria-labelledby="v-pills-1-tab">
+                회원가입 구현
+            </div>
+
+            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+                로그인 구현
+            </div>
+
+            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                세 번째 기능 구현
+            </div>
+
+            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+                네 번째 기능 구현
+            </div>
+
+        </div>
+        <!-- 구동 화면 끝 -->
+
+    </div>
+    <!-- 포폴 본문 끝 -->
+
+</body>
+
+</html>
