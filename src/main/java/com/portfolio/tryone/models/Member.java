@@ -1,4 +1,4 @@
-package com.portfolio.models;
+package com.portfolio.tryone.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.portfolio.dto.MemberRequestDto;
+import com.portfolio.tryone.dto.MemberRequestDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,9 +1,9 @@
-package com.portfolio.services;
+package com.portfolio.tryone.services;
 
-import com.portfolio.dto.ItemDto;
-import com.portfolio.models.ProductRepository;
-import com.portfolio.dto.ProductTpriceRequestDto;
-import com.portfolio.models.Product;
+import com.portfolio.tryone.dto.ItemDto;
+import com.portfolio.tryone.dto.ProductTpriceRequestDto;
+import com.portfolio.tryone.models.Product;
+import com.portfolio.tryone.models.ProductRepository;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

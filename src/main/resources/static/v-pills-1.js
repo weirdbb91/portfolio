@@ -101,34 +101,26 @@ function signIn(email, pwd) {
 
 // [서버로 입력 이메일 전송]
 function sendCodeMail(email) {
-    $('#more-log').append(`-> [개인서버 - 기존회원확인, 인증번호생성, emailjs 식별키 생성]<br>[API 요청] { type : "GET", url : /api/verify?email=${email} }<br>`);
+    $('#more-log').append(`-> [개인서버 - 기존회원확인, 인증번호 발송]<br>[API 요청] { type : "GET", url : /api/verify?email=${email} }<br>`);
     $.ajax({
         type: "GET",
         url: `/api/verify?email=${email}`,
         success: function (response) {
-
-            $('#more-log').append(response);
-            if (response == "0") {
-                $('#more-log').append(`[API 답변] 이미 가입된 회원<br>`);
+            $('#more-log').append(`[API 답변] ${response}`);
+            if (response == "[Info] Existing member email") {
+                $('#more-log').append(` - 이미 가입된 회원<br>`);
                 alert('이미 가입이 된 이메일입니다.');
                 return;
             }
-            $('#more-log').append(`[API 답변] emailjs 식별키<br>`);
-            $('#more-log').append(`-> [emailjs - 이메일 전송 요청]<br>[API 요청] { type : "POST", contentType: application/json, url : https://api.emailjs.com/api/v1.0/email/send<br>`);
-            // $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
-            //     type: 'POST',
-            //     data: response,
-            //     contentType: 'application/json'
-            // }).done(function () {
-            //     $('#more-log').append(`[API 답변] 이메일 전송 완료<br>`);
-            //     alert('전송되었습니다.');
-
-            // }).fail(function (error) {
-            //     $('#more-log').append(`[API 답변] 문제 발생<br>`);
-            //     alert('문제가 발생했습니다. ' + JSON.stringify(error));
-            // });
-            // verifyCode = JSON.parse(response).template_params.verify;
-            // $('#more-log').append(`[인증번호 저장] ${verifyCode}<br>`);
+            if (response.length != 6) {
+                $('#more-log').append(` - 에러 발생<br>`);
+                alert('에러 발생');
+                return;
+            }
+            verifyCode = response;
+            alert('전송되었습니다.');
+            $('#more-log').append(`[API 답변] 이메일 전송 완료<br>`);
+            $('#more-log').append(`[인증번호 저장] ${verifyCode}<br>`);
         }
     })
 }

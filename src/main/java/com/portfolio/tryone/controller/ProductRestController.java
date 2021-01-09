@@ -1,12 +1,12 @@
-package com.portfolio.controller;
+package com.portfolio.tryone.controller;
 
 import java.util.List;
 
-import com.portfolio.dto.ItemDto;
-import com.portfolio.dto.ProductTpriceRequestDto;
-import com.portfolio.models.Product;
-import com.portfolio.models.ProductRepository;
-import com.portfolio.services.ProductService;
+import com.portfolio.tryone.dto.ItemDto;
+import com.portfolio.tryone.dto.ProductTpriceRequestDto;
+import com.portfolio.tryone.models.Product;
+import com.portfolio.tryone.models.ProductRepository;
+import com.portfolio.tryone.services.ProductService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

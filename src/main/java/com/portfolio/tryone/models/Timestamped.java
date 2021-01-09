@@ -1,4 +1,4 @@
-package com.portfolio.models;
+package com.portfolio.tryone.models;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

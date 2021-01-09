@@ -1,9 +1,9 @@
-package com.portfolio.controller;
+package com.portfolio.tryone.controller;
 
 import java.util.List;
 
-import com.portfolio.dto.ItemDto;
-import com.portfolio.utils.NaverShopSearch;
+import com.portfolio.tryone.dto.ItemDto;
+import com.portfolio.tryone.utils.NaverShopSearch;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

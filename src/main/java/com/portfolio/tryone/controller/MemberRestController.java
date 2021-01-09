@@ -1,9 +1,9 @@
-package com.portfolio.controller;
+package com.portfolio.tryone.controller;
 
-import com.portfolio.dto.MemberRequestDto;
-import com.portfolio.models.Member;
-import com.portfolio.models.MemberRepository;
-import com.portfolio.utils.EmailSender;
+import com.portfolio.tryone.dto.MemberRequestDto;
+import com.portfolio.tryone.models.Member;
+import com.portfolio.tryone.models.MemberRepository;
+import com.portfolio.tryone.utils.EmailSender;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +23,7 @@ public class MemberRestController {
     public String getRequestForm(@RequestParam String email) {
         // 중복 검사
         if (memberRepository.findAll().stream().anyMatch(m -> m.getEmail().equals(email))) {
-            return "0";
+            return "[Info] Existing member email";
         }
         return emailSender.getVerifyCode(email);
     }

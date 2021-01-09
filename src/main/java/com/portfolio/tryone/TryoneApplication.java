@@ -1,4 +1,4 @@
-package com.portfolio;
+package com.portfolio.tryone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
