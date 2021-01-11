@@ -39,20 +39,29 @@
         <!-- 프로필 끝 -->
 
         <!-- 포폴 메뉴 버튼 시작 -->
-        <div class="d-flex align-items-start">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical"
+        <div class="d-flex align-items-start p-2">
+            <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical"
                 style="margin-left: 10px;">
-                <a class="nav-link active" id="v-pills-1-tab" data-bs-toggle="pill" href="#v-pills-1" role="tab"
-                    aria-controls="v-pills-1" aria-selected="true">
+                <div class="input-group mb-3">
+                    <input class="member-id form-control" type="text" placeholder="비회원" aria-label="text"
+                        aria-describedby="input-text" disabled="disabled">
+                        <button class="member-id btn btn-outline-secondary" type="button" disabled="disabled">로그아웃</button>
+                </div>
+                <a class="nav-link active" id="home-tab" data-bs-toggle="pill" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">
+                    HOME
+                </a>
+                <a class="nav-link" id="signup-tab" data-bs-toggle="pill" href="#signup" role="tab"
+                    aria-controls="signup" aria-selected="false">
                     1. 회원가입
                 </a>
-                <a class="nav-link" id="v-pills-2-tab" data-bs-toggle="pill" href="#v-pills-2" role="tab"
-                    aria-controls="v-pills-2" aria-selected="false">
+                <a class="nav-link" id="login-tab" data-bs-toggle="pill" href="#login" role="tab" aria-controls="login"
+                    aria-selected="false">
                     2. 로그인
                 </a>
-                <a class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" href="#v-pills-3" role="tab"
-                    aria-controls="v-pills-3" aria-selected="false">
-                    3. 개구리 김치
+                <a class="nav-link" id="personal-tab" data-bs-toggle="pill" href="#personal" role="tab"
+                    aria-controls="personal" aria-selected="false">
+                    3. 회원정보
                 </a>
                 <a class="nav-link" id="v-pills-4-tab" data-bs-toggle="pill" href="#v-pills-4" role="tab"
                     aria-controls="v-pills-4" aria-selected="false">
@@ -72,64 +81,33 @@
             <!-- 상세보기 확장/축소 내용 시작 -->
             <div class="collapse justify-content-center" id="more">
                 <div id="more-box" class="card card-body">
+                    <div class="d-flex align-items-start" style="height: 100%;">
 
-                    <!-- 상세보기 본문 버튼 시작 -->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="more-api-tab" data-bs-toggle="tab" href="#more-api"
-                                role="tab" aria-controls="more-api" aria-selected="true">API</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="more-log-tab" data-bs-toggle="tab" href="#more-log" role="tab"
-                                aria-controls="more-log" aria-selected="false">Log</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
+                        <div class="nav flex-column nav-tabs me-3" role="tablist"
+                            aria-orientation="vertical">
+                            <a class="nav-link active" id="more-api-tap" data-bs-toggle="tab" href="#more-api"
+                                role="tab" aria-controls="more-api" aria-selected="true">API</a> <!-- API -->
+                            <a class="nav-link" id="more-log-tap" data-bs-toggle="tab" href="#more-log" role="tab"
+                                aria-controls="more-log" aria-selected="false">Log</a> <!-- Log -->
                             <a class="nav-link" id="more-review-tab" data-bs-toggle="tab" href="#more-review" role="tab"
-                                aria-controls="more-review" aria-selected="false">후기</a>
-                        </li>
-                    </ul>
-                    <!-- 상세보기 본문 버튼 끝 -->
-
-                    <!-- 상세보기 본문 시작-->
-                    <div class="tab-content" id="myTabContent">
-                        <!-- api 상세 내용 -->
-                        <div class="tab-pane fade show active" id="more-api" role="tabpanel"
-                            aria-labelledby="more-api-tab">
-                            <h3 class="p-2">API 기본 정보</h2>
-                            <table class="table table-api text-center">
-                                <thead class="table-secondary">
-                                    <tr>
-                                        <th scope="col" class="fixed-head">Method</th>
-                                        <th scope="col" class="fixed-head">URL</th>
-                                        <th scope="col" class="fixed-head">Return</th>
-                                        <th scope="col" class="fixed-head">Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>GET</td>
-                                        <td>{HOST}/api/verify</td>
-                                        <td>인증번호</td>
-                                        <td>이메일 중복 확인, 인증번호 생성/발송 요청</td>
-                                    </tr>
-                                    <tr>
-                                        <td>POST</td>
-                                        <td>{HOST}/api/members</td>
-                                        <td>가입회원 정보</td>
-                                        <td>회원가입 요청</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                                aria-controls="more-review" aria-selected="false">후기</a> <!-- 후기 -->
                         </div>
-                        <!-- log 현황 -->
-                        <div class="tab-pane fade" id="more-log" role="tabpanel" aria-labelledby="more-log-tab"></div>
-                        <!-- 후기 -->
-                        <div class="tab-pane fade" id="more-review" role="tabpanel" aria-labelledby="more-review-tab">
+
+                        <div class="tab-content more-tab-box border rounded" style="height: 100%;">
+                            <!-- 상세 API -->
+                            <div class="tab-pane fade show active" id="more-api" role="tabpanel"
+                                aria-labelledby="more-api-tab">
+
+                            </div>
+                            <!-- 상세 Log -->
+                            <div class="tab-pane fade" id="more-log" role="tabpanel" aria-labelledby="more-log-tab">
+                            </div>
+                            <!-- 상세 - 후기 -->
+                            <div class="tab-pane fade" id="more-review" role="tabpanel"
+                                aria-labelledby="more-review-tab"></div>
                         </div>
+
                     </div>
-                    <!-- 상세보기 본문 끝-->
-
                 </div>
             </div>
             <!-- 상세보기 확장/축소 내용 끝 -->
@@ -138,8 +116,7 @@
             <!-- 상세보기 확장/축소 버튼 시작-->
             <p class="row justify-content-center m-1">
                 <a class="btn btn-outline-primary col-2" data-bs-toggle="collapse" href="#more" role="button"
-                    aria-expanded="false" aria-controls="more">
-                    상세
+                    aria-expanded="false" aria-controls="more">상세
                 </a>
             </p>
             <!-- 상세보기 확장/축소 버튼 끝-->
@@ -147,25 +124,28 @@
         <!-- 상세보기 끝 -->
 
 
-
-
         <!-- 구동 화면 시작 -->
-        <div class="tab-content border rounded-start" id="v-pills-tabContent">
+        <div class="tab-content border rounded-start">
 
-            <div class="tab-pane block fade show active position-relative" id="v-pills-1" role="tabpanel"
-                aria-labelledby="v-pills-1-tab">
+            <div class="tab-pane block position-relative fade show active" id="home" role="tabpanel" aria-labelledby="signup-tab">
+                홈 화면 구현
+            </div>
+
+            <div class="tab-pane block position-relative fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
                 회원가입 구현
             </div>
 
-            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+            <div class="tab-pane block position-relative fade" id="login" role="tabpanel" aria-labelledby="login-tab">
                 로그인 구현
             </div>
 
-            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-                세 번째 기능 구현
+            <div class="tab-pane block position-relative fade" id="personal" role="tabpanel"
+                aria-labelledby="personal-tab">
+                회원정보 구현
             </div>
 
-            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+            <div class="tab-pane block position-relative fade" id="v-pills-4" role="tabpanel"
+                aria-labelledby="v-pills-4-tab">
                 네 번째 기능 구현
             </div>
 

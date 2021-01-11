@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="home.js"></script>
+
+</head>
+
+<body>
+
+
+
+    <!-- API table 시작 -->
+    <table class="table table-striped text-center align-middle" id="api-table">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col" class="fixed-head">Description</th>
+                <th scope="col" class="fixed-head">URL</th>
+                <th scope="col" class="fixed-head">Method</th>
+                <th scope="col" class="fixed-head">ContentType</th>
+                <th scope="col" class="fixed-head">Response</th>
+                <th scope="col" class="fixed-head">Fail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="api-table api-member member-join">
+                <td class="description">회원가입 요청</td>
+                <td class="url">{HOST}/api/members</td>
+                <td class="method">POST</td>
+                <td class="contentType">JSON : { 이메일, 비밀번호 }</td>
+                <td class="response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick : 닉네임,<br>String email : 이메일,<br>String password : 암호 }</td>
+                <td class="fail">null</td>
+            </tr>
+            <tr class="api-table api-member member-update">
+                <td class="description">회원정보 변경 요청</td>
+                <td class="url">{HOST}/api/members</td>
+                <td class="method">PUT</td>
+                <td class="contentType">JSON : { 이메일, 닉네임, 비밀번호 }<br>(이메일 외 null로 생략 가능)</td>
+                <td class="response">Long : 회원 식별번호</td>
+                <td class="fail">null</td>
+            </tr>
+            <tr class="api-table api-member member-sendCode">
+                <td class="description">이메일 확인,<br>코드 생성/발송 요청</td>
+                <td class="url">{HOST}/api/verify</td>
+                <td class="method">POST</td>
+                <td class="contentType">JSON : { 이메일, 코드용도 }<br>코드용도 :<br>{ "임시 암호" 또는 "인증 번호" }</td>
+                <td class="response">String : 발생 코드</td>
+                <td class="fail">String : 실패 사유 문자열</td>
+            </tr>
+            <tr id="member-login" class="api-table api-member member-login">
+                <td class="member-login description">로그인 요청</td>
+                <td class="member-login url">{HOST}/api/login</td>
+                <td class="member-login method">POST</td>
+                <td class="member-login contentType">JSON : { 이메일, 암호 }</td>
+                <td class="member-login response">Long : 회원 식별번호</td>
+                <td class="member-login fail">Long : { 0 = 없는 회원, -1 = 에러 }</td>
+            </tr>
+            <tr id="member-getMember" class="api-table api-member member-getMember">
+                <td class="member-getMember description">회원정보 요청</td>
+                <td class="member-getMember url">{HOST}/api/members/회원 식별번호</td>
+                <td class="member-getMember method">GET</td>
+                <td class="member-getMember contentType">none</td>
+                <td class="member-getMember response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick : 닉네임,<br>String email : 이메일,<br>String password : 암호 }</td>
+                <td class="member-getMember fail">null</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- API table 끝 -->
+
+    <!-- 후기 시작 -->
+    <div class="review-function signup-review p-3">
+        검색하고 붙여넣는것 만으로도 이렇게 뭔가 만들수 있는게 신기했고
+        <br>만들다보니 너무 끔찍하도록 어설퍼서 몇번이고 처음부터 새로 만들었다
+        <br>
+        <br>emailjs에서 제공하는 API Docs에는 자바나 스프링 관련 안내가 없고
+        <br>리액트, 앵귤러, 뷰에 대한 예제만 있어서 js 예제를 복사해서 썼다
+        <br>바로 시험해보니 너무 깔끔하게 제대로 작동해서 너무 만족스러웠는데
+        <br>emailjs에서 받은 키가 그대로 노출되는게 안타까웠다
+        <br>
+        <br>스프링 공부중에 js로 처리하는게 싫어 검색을 해봤지만 나오지 않았다
+        <br>그냥 그대로 보내면 되는거라 아무도 궁금해하지 않았기 때문인것 같다
+        <br>기초가 얼마나 중요한지, 내 기초는 얼마나 부족한지를 느꼈다
+        <br>
+        <br>한참을 찾다가 스프링 Docs에서 RestTemplate을 알게 됐다
+        <br>헤더에 타입을 기재해야 된다는걸 몰라서 또 한참을 헤맸다
+        <br>많이 배운것 같아 기쁘지만 동시에 배워야할게 터무니없이 많게 느껴진다
+        <br>아직 이렇게 정갈한 문서로 간단하게 배울수 있다는게 너무 감사하다
+        <br>
+        <br>2021-01-09 토요일 21시 49분 첫 포폴 기능 - 회원가입 완성
+    </div>
+
+    <div class="review-function login-review p-3">
+        로그인은 금방 만들었지만 과정에서 기존 코드의 결함들을 발견했고
+        <br>이미 발견해버린 이상 고치지 않을 수 없었다
+        <br>코드를 고치다보니 중복과 비효율적인 구성을 찾아버렸고
+        <br>생각보다 많은 시간이 소요됐지만 아깝다고 생각하지 않는다
+        <br>
+        <br>2021-01-11 월요일 22시 26분 2번째 포폴 기능 - 로그인 완성
+    </div>
+
+    <!-- 후기 끝 -->
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="signup.js"></script>
+</head>
+
+<body>
+    <!-- 회원가입 시작 -->
+    <div class="position-absolute top-50 start-50 translate-middle h-100 p-5" style="width: 90%; max-width: 450px;">
+
+        <button type="button" disabled class="btn d-grid gap-2 col-6 mx-auto mb-4 passed">회원가입</button>
+
+        <div class="form-text">※ 제 메일에서 발송됩니다</div>
+        <div class="input-group mb-3">
+            <span class="sign email title input-group-text">Email</span>
+            <input class="sign email input form-control" type="text" placeholder="Email을 입력해주세요" aria-label="Email"
+                aria-describedby="input-Email">
+            <button class="sign email btn btn-outline-secondary" type="button">인증</button>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="sign verify title input-group-text">Verify</span>
+            <input class="sign verify input form-control" type="text" placeholder="인증번호를 입력해주세요" aria-label="Verify"
+                aria-describedby="input-Verify" disabled="disabled">
+            <button class="sign verify btn btn-outline-secondary" type="button" disabled="disabled">확인</button>
+        </div>
+
+        <div class="form-text">※ 보안기능 없습니다 주의!</div>
+        <div class="input-group mb-3">
+            <span class="sign pwd title input-group-text">Password</span>
+            <input class="sign pwd input form-control" type="password" placeholder="비밀번호를 입력해주세요" aria-label="Password"
+                aria-describedby="input-Password" disabled="disabled">
+        </div>
+        <div class="input-group mb-3">
+            <span class="sign cnfm title input-group-text">Confirm</span>
+            <input class="sign cnfm input form-control" type="password" placeholder="한번 더 입력해주세요" aria-label="Confirm"
+                aria-describedby="input-Confirm" disabled="disabled">
+            <button class="sign cnfm btn btn-outline-secondary" type="button" disabled="disabled">가입</button>
+        </div>
+        <br><br>
+    </div>
+    <!-- 회원가입 끝 -->
+</body>
+
+</html>
