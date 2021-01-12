@@ -28,45 +28,64 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="api-table api-member member-join">
-                <td class="description">회원가입 요청</td>
-                <td class="url">{HOST}/api/members</td>
-                <td class="method">POST</td>
-                <td class="contentType">JSON : { 이메일, 비밀번호 }</td>
-                <td class="response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick : 닉네임,<br>String email : 이메일,<br>String password : 암호 }</td>
-                <td class="fail">null</td>
+            <!-- api-members -->
+            <tr class="api-table api-member member-join ">
+                <td class="member-join description">회원가입 요청</td>
+                <td class="member-join url">{HOST}/api/members</td>
+                <td class="member-join method">POST</td>
+                <td class="member-join contentType">JSON : { 이메일, 비밀번호 }</td>
+                <td class="member-join response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick : 닉네임,<br>String email : 이메일,<br>String password : 암호 }</td>
+                <td class="member-join fail">null</td>
             </tr>
-            <tr class="api-table api-member member-update">
-                <td class="description">회원정보 변경 요청</td>
-                <td class="url">{HOST}/api/members</td>
-                <td class="method">PUT</td>
-                <td class="contentType">JSON : { 이메일, 닉네임, 비밀번호 }<br>(이메일 외 null로 생략 가능)</td>
-                <td class="response">Long : 회원 식별번호</td>
-                <td class="fail">null</td>
-            </tr>
-            <tr class="api-table api-member member-sendCode">
-                <td class="description">이메일 확인,<br>코드 생성/발송 요청</td>
-                <td class="url">{HOST}/api/verify</td>
-                <td class="method">POST</td>
-                <td class="contentType">JSON : { 이메일, 코드용도 }<br>코드용도 :<br>{ "임시 암호" 또는 "인증 번호" }</td>
-                <td class="response">String : 발생 코드</td>
-                <td class="fail">String : 실패 사유 문자열</td>
-            </tr>
-            <tr id="member-login" class="api-table api-member member-login">
-                <td class="member-login description">로그인 요청</td>
-                <td class="member-login url">{HOST}/api/login</td>
-                <td class="member-login method">POST</td>
-                <td class="member-login contentType">JSON : { 이메일, 암호 }</td>
-                <td class="member-login response">Long : 회원 식별번호</td>
-                <td class="member-login fail">Long : { 0 = 없는 회원, -1 = 에러 }</td>
-            </tr>
-            <tr id="member-getMember" class="api-table api-member member-getMember">
+            <tr class="api-table api-member member-getMember">
                 <td class="member-getMember description">회원정보 요청</td>
                 <td class="member-getMember url">{HOST}/api/members/회원 식별번호</td>
                 <td class="member-getMember method">GET</td>
                 <td class="member-getMember contentType">none</td>
                 <td class="member-getMember response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick : 닉네임,<br>String email : 이메일,<br>String password : 암호 }</td>
                 <td class="member-getMember fail">null</td>
+            </tr>
+            <tr class="api-table api-member member-update ">
+                <td class="member-update description">회원정보 변경 요청</td>
+                <td class="member-update url">{HOST}/api/members</td>
+                <td class="member-update method">PUT</td>
+                <td class="member-update contentType">JSON : { 이메일, 닉네임, 비밀번호 }<br>(유의미한 입력값만 반영)</td>
+                <td class="member-update response">Long : 회원 식별번호</td>
+                <td class="member-update fail">null</td>
+            </tr>
+            <tr class="api-table api-member member-delete ">
+                <td class="member-delete description">회원정보 삭제 요청</td>
+                <td class="member-delete url">{HOST}/api/members</td>
+                <td class="member-delete method">DELETE</td>
+                <td class="member-delete contentType">Long : 회원 식별번호</td>
+                <td class="member-delete response">Long : 삭제된 회원 식별번호</td>
+                <td class="member-delete fail">null</td>
+            </tr>
+
+            <tr class="api-table api-member member-gerNicks">
+                <td class="member-gerNicks description">회원 닉네임 리스트 요청</td>
+                <td class="member-gerNicks url">{HOST}/api/members/nicks</td>
+                <td class="member-gerNicks method">GET</td>
+                <td class="member-gerNicks contentType">none</td>
+                <td class="member-gerNicks response">JSON : 회원 닉네임 리스트</td>
+                <td class="member-gerNicks fail">null</td>
+            </tr>
+
+            <tr class="api-table api-member member-sendCode">
+                <td class="member-sendCode description">이메일 확인,<br>코드 생성/발송 요청</td>
+                <td class="member-sendCode url">{HOST}/api/verify</td>
+                <td class="member-sendCode method">POST</td>
+                <td class="member-sendCode contentType">JSON : { 이메일, 코드용도 }<br>코드용도 :<br>{ "임시 암호" 또는 "인증 번호" }</td>
+                <td class="member-sendCode response">String : 발생 코드</td>
+                <td class="member-sendCode fail">String : 실패 사유 문자열</td>
+            </tr>
+            <tr class="api-table api-member member-login">
+                <td class="member-login description">로그인 요청</td>
+                <td class="member-login url">{HOST}/api/login</td>
+                <td class="member-login method">POST</td>
+                <td class="member-login contentType">JSON : { 이메일, 암호 }</td>
+                <td class="member-login response">Long : 회원 식별번호</td>
+                <td class="member-login fail">Long : { 0 = 없는 회원, -1 = 에러 }</td>
             </tr>
         </tbody>
     </table>
@@ -101,6 +120,18 @@
         <br>생각보다 많은 시간이 소요됐지만 아깝다고 생각하지 않는다
         <br>
         <br>2021-01-11 월요일 22시 26분 2번째 포폴 기능 - 로그인 완성
+    </div>
+    
+    <div class="review-function personal-review p-3">
+        회원 탈퇴시 한번더 의사를 묻는 모달 창을 띄우고 싶었는데
+        <br>여러 HTML 파일이 복잡하게 얽혀있다보니 제대로 활성화가 되지 않았다
+        <br>그러다 문득 이게 포폴의 유의미한 부분이 될까? 하는 생각이 들었다
+        <br>
+        <br>몰입하는건 좋지만 난 백엔드 개발자를 목표로 포폴을 만드는 중인데
+        <br>잘 알지도 못하는 프론트엔드 쪽에 너무 시간을 소모하는것 같았다
+        <br>무의미한 결과를 위해 희생할 시간이 없다 이건 집착이다
+        <br>
+        <br>2021-01-12 화요일 23시 57분 3번째 포폴 기능 - 회원정보 완성
     </div>
 
     <!-- 후기 끝 -->

@@ -45,6 +45,7 @@ $(document).ready(function () {
         logAppend('login API Docs, review init');
         $('.member-getMember').show();
         $('.member-update').show();
+        $('.member-delete').show();
 
         $('.personal-review').show();
     });
@@ -78,18 +79,6 @@ function API_JSON_Body(type, url, request) {
     return result;
 }
 
-function API_Path(type, url, path) {
-    var result;
-    $.ajax({
-        type: type,
-        url: url + "/" + path,
-        success: function (response) {
-            result = response;
-        }
-    });
-    return result;
-}
-
 function API_Join(email, pwd) {
     var request = { "email": email, "password": pwd };
     logAppend(`[API - member-join] request : ${JSON.stringify(request)}`);
@@ -116,6 +105,45 @@ function API_Update(email, nick, password) {
 
 function API_GetMember(id) {
     logAppend(`[API - member-getMember]`);
-    return API_Path("GET", "/api/members", id);
+    var result;
+    $.ajax({
+        type: "GET",
+        url: `/api/members?id=${id}`,
+        async: false,
+        success: function (response) {
+            result = response;
+        }
+    });
+    return result;
+}
+
+
+function API_DeleteMember(id) {
+    logAppend(`[API - member-deleteMember]`);
+    var result;
+    $.ajax({
+        type: "DELETE",
+        url: `/api/members?id=${id}`,
+        async: false,
+        success: function (response) {
+            result = response;
+        }
+    });
+    return result;
+}
+
+
+function API_GetNicks() {
+    logAppend(`[API - member-getNicks]`);
+    var result;
+    $.ajax({
+        type: "GET",
+        url: `/api/members/nicks`,
+        async: false,
+        success: function (response) {
+            result = response;
+        }
+    });
+    return result;
 }
 

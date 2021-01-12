@@ -36,8 +36,17 @@ public class Member extends Timestamped {
     }
 
     public Long update(Map<String, Object> param) {
-        this.password = param.get("password") == null ? this.password : (String) param.get("password");
-        this.nick = param.get("nick") == null ? this.nick : (String) param.get("nick");
+        if (param.get("password") != null && param.get("password") != "") {
+            this.password = (String) param.get("password");
+        }
+        if (param.get("nick") != null && param.get("nick") != "") {
+            this.nick = (String) param.get("nick");
+        }
+        System.out.println("update user info");
+        System.out.println(this.id);
+        System.out.println(this.nick);
+        System.out.println(this.email);
+        System.out.println(this.password);
         return this.id;
     }
 }
