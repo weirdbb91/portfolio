@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="community.js"></script>
+</head>
+
+<body>
+    <!-- 커뮤니티 시작 -->
+    <div class="position-absolute border border-5" style="width: 100%; height: 100%; ">
+        <!-- <div class="position-absolute top-50 start-50 translate-middle h-100 p-5" style="width: 90%; max-width: 450px;"> -->
+        <div class="input-group mb-3 p-1 vert">
+            <!-- <button type="button" disabled class="btn d-grid gap-2 mx-auto mb-4 passed">백승호 포폴 커뮤니티</button> -->
+            <button type="button" disabled class="btn">백승호 포폴 커뮤니티</button>
+            <button type="button" disabled class="btn board-title">국산벌꿀</button>
+            <div class="btn-group">
+                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    게시판
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">국산벌꿀</a></li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li><button type="button" class="btn board-new" data-bs-toggle="modal" data-bs-target="#Modal">새
+                            게시판</button></li>
+                </ul>
+            </div>
+            <button type="button" disabled class="btn">작성자</button>
+            <button type="button" disabled class="btn board-creator">황상엽씨</button>
+        </div>
+
+
+        <!-- 게시판 본문 -->
+        <div class="vert board-box p-3" style="width: 100%; height: max-content; background-color: beige;">
+            <div class="col-10" style="height: 100%; background-color: red;">게시판 게시글 목록</div>
+            
+            <!-- Button trigger modal -->
+            <button type="button" class="btn" disabled="disabled" data-bs-toggle="modal" data-bs-target="#modal">회원 탈퇴</button>
+
+            <!-- Modal -->
+            <!-- <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">회원 탈퇴</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            회원 탈퇴시 복구할 수 없습니다
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="personal btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
+                            <button class="personal btn btn-outline-secondary" type="button">탈퇴</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+    <!-- 커뮤니티 끝 -->
+</body>
+
+</html>

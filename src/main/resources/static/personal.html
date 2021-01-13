@@ -24,8 +24,8 @@
 
         <div class="input-group mb-3">
             <span class="personal nick title input-group-text">Nick</span>
-            <input class="personal nick input form-control" type="text" aria-label="text"
-                aria-describedby="input-Nick" disabled="disabled">
+            <input class="personal nick input form-control" type="text" aria-label="text" aria-describedby="input-Nick"
+                disabled="disabled">
         </div>
 
         <div class="input-group mb-3">
@@ -33,7 +33,7 @@
             <input class="personal pwd input form-control" type="password" aria-label="Password"
                 aria-describedby="input-Password" disabled="disabled">
         </div>
-        
+
         <div class="input-group mb-3">
             <span class="personal cnfm title input-group-text">Confirm</span>
             <input class="personal cnfm input form-control" type="password" aria-label="Password"
@@ -43,13 +43,30 @@
 
         <br><br>
 
-        <div class="input-group mb-3">
-            <button class="personal signout-btn btn btn-outline-secondary" type="button" disabled="disabled">회원 탈퇴</button>
-            <button class="personal signout-yes btn btn-outline-secondary" type="button">예</button>
-            <button class="personal signout-no btn btn-outline-secondary" type="button">아니오</button>
-            <div class="form-text signout-yes">※ 탈퇴시 복원 기능 없습니다</div>
+        <!-- Button trigger modal -->
+        <button type="button" class="personal signout-btn btn btn-outline-secondary" data-bs-toggle="modal"
+            data-bs-target="#modal-signout">회원 탈퇴</button>
+        <!-- Modal -->
+        <div class="modal fade" id="modal-signout" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">회원 탈퇴</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal-signout"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        회원 탈퇴시 복구할 수 없습니다
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="personal signout-no btn btn-outline-secondary"
+                            data-bs-dismiss="modal-signout">취소</button>
+                        <button class="personal signout-yes btn btn-outline-secondary" type="button">탈퇴</button>
+                    </div>
+                </div>
+            </div>
         </div>
-            
+
         <br><br>
     </div>
     <!-- 회원정보 끝 -->

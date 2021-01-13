@@ -14,4 +14,5 @@ $(document).ready(function () {
     $("#signup").load("signup.html");
     $("#login").load("login.html");
     $("#personal").load("personal.html");
+    $("#community").load("community.html");
 })

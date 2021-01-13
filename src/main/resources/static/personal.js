@@ -4,8 +4,10 @@ var member;
 $(document).ready(function () {
     logAppend('personal function loaded');
 
-    $('.signout-yes').hide();
-    $('.signout-no').hide();
+    $('.signout-btn').attr('disabled', 'disabled');
+    
+    // $('.signout-yes').hide();
+    // $('.signout-no').hide();
     
     // 로그인시 회원정보 표시
     $('#personal-tab').on('click', function () {

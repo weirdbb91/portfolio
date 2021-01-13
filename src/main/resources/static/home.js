@@ -49,6 +49,19 @@ $(document).ready(function () {
 
         $('.personal-review').show();
     });
+
+    // 커뮤니티
+    $('#community-tab').on('click', function () {
+        $('.api-table').hide();
+        $('.review-function').hide();
+
+        logAppend('community API Docs, review init');
+        // $('.member-getMember').show();
+        // $('.member-update').show();
+        // $('.member-delete').show();
+
+        $('.community-review').show();
+    });
 })
 
 // 로그 추가
