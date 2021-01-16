@@ -92,71 +92,88 @@ function API_JSON_Body(type, url, request) {
     return result;
 }
 
-function API_Join(email, pwd) {
-    var request = { "email": email, "password": pwd };
-    logAppend(`[API - member-join] request : ${JSON.stringify(request)}`);
-    return API_JSON_Body("POST", "/api/members", request);
+function API_Params(type, url) {
+    var result;
+    $.ajax({
+        type: type,
+        url: url,
+        async: false,
+        success: function (response) {
+            result = response;
+        }
+    });
+    return result;
 }
 
-function API_SendCode(email, purpose) {
+
+
+function API_verify_POST_SendCode(email, purpose) {
     var request = { "email": email, "purpose": purpose };
     logAppend(`[API - member-sendCode] request : ${JSON.stringify(request)}`);
     return API_JSON_Body("POST", "/api/verify", request);
 }
 
-function API_Login(email, password) {
+function API_login_POST_Login(email, password) {
     var request = { 'email': email, 'password': password };
     logAppend(`[API - member-login] request : ${JSON.stringify(request)}`);
     return API_JSON_Body("POST", "/api/login", request);
 }
 
-function API_Update(email, nick, password) {
+
+// members
+function API_members_POST_Join(email, pwd) {
+    var request = { "email": email, "password": pwd };
+    logAppend(`[API - member-join] request : ${JSON.stringify(request)}`);
+    return API_JSON_Body("POST", "/api/members", request);
+}
+
+function API_members_GET_GetMember(id) {
+    logAppend(`[API - member-getMember] id = ${id}`);
+    return API_Params("GET", `/api/members?id=${id}`);
+}
+
+function API_members_PUT_Update(email, nick, password) {
     var request = { 'email': email, 'nick': nick, 'password': password };
     logAppend(`[API - member-update] request : {"email":"${email}","nick":${nick},"password":"******"}`);
     return API_JSON_Body("PUT", "/api/members", request);
 }
 
-function API_GetMember(id) {
-    logAppend(`[API - member-getMember]`);
-    var result;
-    $.ajax({
-        type: "GET",
-        url: `/api/members?id=${id}`,
-        async: false,
-        success: function (response) {
-            result = response;
-        }
-    });
-    return result;
+function API_members_DELETE_DeleteMember(id) {
+    logAppend(`[API - member-deleteMember] id = ${id}`);
+    return API_Params("DELETE", `/api/members?id=${id}`);
 }
 
-
-function API_DeleteMember(id) {
-    logAppend(`[API - member-deleteMember]`);
-    var result;
-    $.ajax({
-        type: "DELETE",
-        url: `/api/members?id=${id}`,
-        async: false,
-        success: function (response) {
-            result = response;
-        }
-    });
-    return result;
-}
-
-
-function API_GetNicks() {
+function API_members_nicks_GET_GetNicks() {
     logAppend(`[API - member-getNicks]`);
-    var result;
-    $.ajax({
-        type: "GET",
-        url: `/api/members/nicks`,
-        async: false,
-        success: function (response) {
-            result = response;
-        }
-    });
-    return result;
+    return API_Params("GET", `/api/members/nicks`);
+}
+
+
+// boards
+function API_boards_POST_PostBoard(memberId, title, content, status) {
+    var request = { "memberId": memberId, "title": title, "content": content, "status": status };
+    logAppend(`[API - board-post] request : ${JSON.stringify(request)}`);
+    return API_JSON_Body("POST", "/api/boards", request);
+}
+
+function API_boards_GET_GetBoards() {
+    logAppend(`[API - board-getBoards]`);
+    return API_Params("GET", "/api/boards");
+}
+
+function API_boards_GET_GetBoardById(id) {
+    logAppend(`[API - board-getBoardById] id = ${id}`);
+    return API_Params("GET", `/api/boards/${id}`);
+}
+
+function API_boards_PUT_UpdateBoard(boardId, title, memberId, status, content) {
+    var request = { "boardId": boardId, "title": title, "memberId": memberId, "status": status, "content": content };
+    logAppend(`[API - board-update] request : ${JSON.stringify(request)}`);
+    return API_JSON_Body("PUT", "/api/boards", request);
+}
+
+function API_boards_DELETE_DeleteBoard(id) {
+    logAppend(`[API - board-deleteBoard] id = ${id}`);
+    return API_Params("DELETE", `/api/boards?id=${id}`);
 }
 

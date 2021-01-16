@@ -1,4 +1,4 @@
-package com.portfolio.tryone;
+package com.portfolio.community;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,9 +8,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableJpaAuditing
 @SpringBootApplication
-public class TryoneApplication {
+public class CommunityApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TryoneApplication.class, args);
+        SpringApplication.run(CommunityApplication.class, args);
     }
 }

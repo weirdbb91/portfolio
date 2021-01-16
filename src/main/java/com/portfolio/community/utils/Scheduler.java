@@ -1,9 +1,9 @@
-package com.portfolio.tryone.utils;
+package com.portfolio.community.utils;
 
-import com.portfolio.tryone.dto.ItemDto;
-import com.portfolio.tryone.models.Product;
-import com.portfolio.tryone.models.ProductRepository;
-import com.portfolio.tryone.services.ProductService;
+import com.portfolio.community.dto.ItemDto;
+import com.portfolio.community.models.Product;
+import com.portfolio.community.models.ProductRepository;
+import com.portfolio.community.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

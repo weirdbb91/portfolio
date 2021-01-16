@@ -4,7 +4,6 @@ var member;
 $(document).ready(function () {
     logAppend('personal function loaded');
 
-    $('.signout-btn').attr('disabled', 'disabled');
     
     // $('.signout-yes').hide();
     // $('.signout-no').hide();
@@ -12,7 +11,7 @@ $(document).ready(function () {
     // 로그인시 회원정보 표시
     $('#personal-tab').on('click', function () {
         if (memberId != 0) {
-            member = API_GetMember(memberId);
+            member = API_members_GET_GetMember(memberId);
             $('.personal').removeAttr('disabled');
             $('.personal.input.email').val(member.email);
             $('.personal.input.email').attr('disabled', 'disabled');
@@ -20,8 +19,7 @@ $(document).ready(function () {
             $('.personal.signout-btn').removeAttr('disabled');
         } else {
             $('.personal.input').val('');
-            $('.personal.input').attr('disabled', 'disabled');
-            $('.personal.signout-btn').attr('disabled', 'disabled');
+            $('.personal').attr('disabled', 'disabled');
         }
     });
 
@@ -39,7 +37,7 @@ $(document).ready(function () {
         var requestNick = $('.personal.input.nick').val();
         if (requestNick != member.nick) {
             // 닉 중복 확인
-            var nicks = API_GetNicks();
+            var nicks = API_members_nicks_GET_GetNicks();
             for (var i = 0; i < nicks.length; i += 1) {
                 logAppend("닉네임 비교중 " + nicks[i]);
                 if (requestNick == nicks[i] && member.nick != nicks[i]) {
@@ -54,7 +52,7 @@ $(document).ready(function () {
             return;
         }
         
-        var result = API_Update($('.personal.input.email').val(), $('.personal.input.nick').val(), $('.personal.input.pwd').val());
+        var result = API_members_PUT_Update($('.personal.input.email').val(), $('.personal.input.nick').val(), $('.personal.input.pwd').val());
         if (result == null) {
             alert("에러 발생");
             return;
@@ -62,20 +60,11 @@ $(document).ready(function () {
         alert("회원정보 변경 완료");
     });
 
-    $('.personal.signout-btn').on('click', function () {
-        $('.signout-yes').show();
-        $('.signout-no').show();
-        $('.personal.signout-btn').attr('disabled', 'disabled');
-    });
-
     $('.signout-yes').on('click', function () {
-        API_DeleteMember(memberId);
-        location.reload();
-    });
-        
-    $('.signout-no').on('click', function () {
-        $('.signout-yes').hide();
-        $('.signout-no').hide();
-        $('.personal.signout-btn').removeAttr('disabled');
+        // API_DeleteMember(memberId);
+        logout();
+        $('.personal.input').val('');
+        $('.personal').attr('disabled', 'disabled');
+        alert('탈퇴되었습니다');
     });
 });

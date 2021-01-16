@@ -16,7 +16,7 @@ $(document).ready(function () {
         if (!$('.sign.email.input').attr('disabled')) {
             // [서버로 이메일 전송]
             logAppend($('.input.email').val() + `로 인증번호 발신 요청`);
-            verifyCode = API_SendCode($('.input.email').val(), "인증 번호");
+            verifyCode = API_verify_POST_SendCode($('.input.email').val(), "인증 번호");
 
 
             if (verifyCode.length == 6) {
@@ -93,7 +93,7 @@ $(document).ready(function () {
 
     // [회원가입 요청]
     $('.sign.cnfm.btn').on('click', function () {
-        var response = API_Join($('.input.email').val(), $('.input.pwd').val());
+        var response = API_members_POST_Join($('.input.email').val(), $('.input.pwd').val());
         logAppend(`[API 답변] 회원번호 ${response.id}번 회원으로 가입 성공`);
         alert('가입되었습니다.');
     });

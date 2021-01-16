@@ -1,4 +1,4 @@
-package com.portfolio.tryone.models;
+package com.portfolio.community.models;
 
 import javax.persistence.MappedSuperclass;
 

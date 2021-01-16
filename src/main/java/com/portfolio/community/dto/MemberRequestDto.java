@@ -1,4 +1,4 @@
-package com.portfolio.tryone.dto;
+package com.portfolio.community.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,18 +1,17 @@
-package com.portfolio.tryone.controller;
+package com.portfolio.community.controller;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.portfolio.tryone.models.Member;
-import com.portfolio.tryone.models.MemberRepository;
-import com.portfolio.tryone.services.MemberService;
-import com.portfolio.tryone.utils.EmailSender;
+import com.portfolio.community.models.Member;
+import com.portfolio.community.models.MemberRepository;
+import com.portfolio.community.services.MemberService;
+import com.portfolio.community.utils.EmailSender;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;

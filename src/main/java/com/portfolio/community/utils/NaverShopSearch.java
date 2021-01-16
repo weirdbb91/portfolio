@@ -1,9 +1,9 @@
-package com.portfolio.tryone.utils;
+package com.portfolio.community.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.portfolio.tryone.dto.ItemDto;
+import com.portfolio.community.dto.ItemDto;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

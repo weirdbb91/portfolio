@@ -1,9 +1,9 @@
-package com.portfolio.tryone.services;
+package com.portfolio.community.services;
 
 import java.util.Map;
 
-import com.portfolio.tryone.models.Member;
-import com.portfolio.tryone.models.MemberRepository;
+import com.portfolio.community.models.Member;
+import com.portfolio.community.models.MemberRepository;
 
 import org.springframework.stereotype.Service;
 

@@ -28,13 +28,34 @@
             </tr>
         </thead>
         <tbody>
+
+
+            <tr class="api-table api-member member-sendCode">
+                <td class="member-sendCode description">이메일 확인,<br>코드 생성/발송 요청</td>
+                <td class="member-sendCode url">{HOST}/api/verify</td>
+                <td class="member-sendCode method">POST</td>
+                <td class="member-sendCode contentType">JSON : { 이메일, 코드용도 }<br>코드용도 :<br>{ "임시 암호" 또는 "인증 번호" }</td>
+                <td class="member-sendCode response">String : 발생 코드</td>
+                <td class="member-sendCode fail">String : 실패 사유 문자열</td>
+            </tr>
+            <tr class="api-table api-member member-login">
+                <td class="member-login description">로그인 요청</td>
+                <td class="member-login url">{HOST}/api/login</td>
+                <td class="member-login method">POST</td>
+                <td class="member-login contentType">JSON : { 이메일, 암호 }</td>
+                <td class="member-login response">Long : 회원 식별번호</td>
+                <td class="member-login fail">Long : { 0 = 없는 회원, -1 = 에러 }</td>
+            </tr>
+
+
             <!-- api-members -->
             <tr class="api-table api-member member-join ">
                 <td class="member-join description">회원가입 요청</td>
                 <td class="member-join url">{HOST}/api/members</td>
                 <td class="member-join method">POST</td>
                 <td class="member-join contentType">JSON : { 이메일, 비밀번호 }</td>
-                <td class="member-join response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick : 닉네임,<br>String email : 이메일,<br>String password : 암호 }</td>
+                <td class="member-join response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick : 닉네임,<br>String
+                    email : 이메일,<br>String password : 암호 }</td>
                 <td class="member-join fail">null</td>
             </tr>
             <tr class="api-table api-member member-getMember">
@@ -42,7 +63,8 @@
                 <td class="member-getMember url">{HOST}/api/members/회원 식별번호</td>
                 <td class="member-getMember method">GET</td>
                 <td class="member-getMember contentType">none</td>
-                <td class="member-getMember response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick : 닉네임,<br>String email : 이메일,<br>String password : 암호 }</td>
+                <td class="member-getMember response">JSON : 가입회원 정보 {<br>Long id : 식별번호,<br>String nick :
+                    닉네임,<br>String email : 이메일,<br>String password : 암호 }</td>
                 <td class="member-getMember fail">null</td>
             </tr>
             <tr class="api-table api-member member-update ">
@@ -71,22 +93,47 @@
                 <td class="member-gerNicks fail">null</td>
             </tr>
 
-            <tr class="api-table api-member member-sendCode">
-                <td class="member-sendCode description">이메일 확인,<br>코드 생성/발송 요청</td>
-                <td class="member-sendCode url">{HOST}/api/verify</td>
-                <td class="member-sendCode method">POST</td>
-                <td class="member-sendCode contentType">JSON : { 이메일, 코드용도 }<br>코드용도 :<br>{ "임시 암호" 또는 "인증 번호" }</td>
-                <td class="member-sendCode response">String : 발생 코드</td>
-                <td class="member-sendCode fail">String : 실패 사유 문자열</td>
+
+
+            
+            <!-- api-boards -->
+            <tr class="api-table api-board board-post ">
+                <td class="board-join description">게시판 생성 요청</td>
+                <td class="board-join url">{HOST}/api/boards</td>
+                <td class="board-join method">POST</td>
+                <td class="board-join contentType">JSON : { 게시판 이름, 회원번호, 상태, 내용 }</td>
+                <td class="board-join response">JSON : 게시판 정보 {<br>Long id : 게시판 번호,<br>String boardTitle : 게시판 이름,<br>Long
+                    memberId : 회원번호,<br>String status : 상태,<br>String content : 내용 }</td>
+                <td class="board-join fail">null</td>
             </tr>
-            <tr class="api-table api-member member-login">
-                <td class="member-login description">로그인 요청</td>
-                <td class="member-login url">{HOST}/api/login</td>
-                <td class="member-login method">POST</td>
-                <td class="member-login contentType">JSON : { 이메일, 암호 }</td>
-                <td class="member-login response">Long : 회원 식별번호</td>
-                <td class="member-login fail">Long : { 0 = 없는 회원, -1 = 에러 }</td>
+            <tr class="api-table api-board board-getBoards ">
+                <td class="board-getboard description">게시판정보 요청</td>
+                <td class="board-getboard url">{HOST}/api/boards</td>
+                <td class="board-getboard method">GET</td>
+                <td class="board-getboard contentType">none</td>
+                <td class="board-getboard response">JSON : 게시판 리스트</td>
+                <td class="board-getboard fail">null</td>
             </tr>
+            <tr class="api-table api-board board-update ">
+                <td class="board-update description">게시판 정보 변경 요청</td>
+                <td class="board-update url">{HOST}/api/boards</td>
+                <td class="board-update method">PUT</td>
+                <td class="board-join contentType">JSON : { 회원번호, 게시판 이름, 회원번호, 상태, 내용 }</td>
+                <td class="board-update response">Long : 게시판 번호</td>
+                <td class="board-update fail">null</td>
+            </tr>
+            <tr class="api-table api-board board-DeleteBoard ">
+                <td class="board-delete description">게시판 삭제 요청</td>
+                <td class="board-delete url">{HOST}/api/boards</td>
+                <td class="board-delete method">DELETE</td>
+                <td class="board-delete contentType">Long : 게시판 번호</td>
+                <td class="board-delete response">Long : 삭제된 게시판 번호</td>
+                <td class="board-delete fail">null</td>
+            </tr>
+
+
+
+
         </tbody>
     </table>
     <!-- API table 끝 -->
@@ -121,7 +168,7 @@
         <br>
         <br>2021-01-11 월요일 22시 26분 2번째 포폴 기능 - 로그인 완성
     </div>
-    
+
     <div class="review-function personal-review p-3">
         회원 탈퇴시 한번더 의사를 묻는 모달 창을 띄우고 싶었는데
         <br>여러 HTML 파일이 복잡하게 얽혀있다보니 제대로 활성화가 되지 않았다

@@ -1,20 +1,85 @@
-// // 3번째 포폴 기능 - 회원정보
-// var member;
+// // 4번째 포폴 기능 - 게시판
+var boardList = [];
+var currentBoard;
+var currentPost;
 
 $(document).ready(function () {
-    $('.btn.board-new').on('click', function () {
-        if (memberId == 0) {
-            alert("로그인 해주세요");
-            return;
-        }
-        
+
+    // 새 게시판 생성
+    $('.new-board-yes').on('click', function () {
+        API_boards_POST_PostBoard(memberId, $('.new-board-name.input').val(), $('.new-board-content.input').val(), "정상");
+        $('.community.input').val('');
+        loadBoardList();
     })
+
+
+
+    // 글쓰기
+    $('.new-post-yes').on('click', function () {
+        API_posts_POST_PostPost(memberId, $('.new-post-name.input').val(), $('.new-post-content.input').val(), "정상");
+        $('.community.input').val('');
+        // loadBoardList();
+    })
+
+    // 글 수정
+    $('.update-post-yes').on('click', function () {
+        API_posts_PUT_UpdatePost(memberId, $('.new-post-name.input').val(), $('.new-post-content.input').val(), "정상");
+        $('.community.input').val('');
+        // loadBoardList();
+    })
+
+    // 글 삭제
+    $('.post-delete').on('click', function () {
+        API_posts_DELETE_DeletePost(memberId, $('.new-post-name.input').val(), $('.new-post-content.input').val(), "정상");
+        $('.community.input').val('');
+        // loadBoardList();
+    })
+    
+
+
+    loadBoardList();
+    $('.board-new').attr('disabled', 'disabled');
+
+    login(93); // 임시
+
 });
+
+function loadBoardList() {
+    boardList = API_boards_GET_GetBoards();
+
+    $('.board-list').empty();
+
+    if (boardList != null) {
+        loadBoard(boardList[0].id);
+        for (let index = 0; index < boardList.length; index++) {
+            $('.board-list').append(`<li><a class="dropdown-item" onclick="loadBoard(${boardList[index].id});">${boardList[index].title} 게시판</a></li>`);
+        }
+    }
+
+    $('.board-list').append(`<li><hr class="dropdown-divider"></li>
+                    <li><button type="button" class="btn board-new" data-bs-toggle="modal" data-bs-target="#new-board-modal">
+                        새 게시판</button></li>`);
+};
+
+function loadBoard(boardId) {
+    currentBoard = API_boards_GET_GetBoardById(boardId);
+    $('.board-title').empty();
+    $('.board-title').append(currentBoard.title);
+
+    $('.board-creator').empty();
+    $('.board-creator').append(API_members_GET_GetMember(currentBoard.memberId).nick);
+
+    $('.board-content').empty();
+    $('.board-content').append(currentBoard.content);
+};
+
+
+
 //     logAppend('personal function loaded');
 
 //     $('.signout-yes').hide();
 //     $('.signout-no').hide();
-    
+
 //     // 로그인시 회원정보 표시
 //     $('#personal-tab').on('click', function () {
 //         if (memberId != 0) {
@@ -41,7 +106,7 @@ $(document).ready(function () {
 //             alert("닉네임을 입력하지 않았습니다");
 //             return;
 //         }
-        
+
 //         var requestNick = $('.personal.input.nick').val();
 //         if (requestNick != member.nick) {
 //             // 닉 중복 확인
@@ -59,7 +124,7 @@ $(document).ready(function () {
 //             alert("변경할 정보가 없습니다");
 //             return;
 //         }
-        
+
 //         var result = API_Update($('.personal.input.email').val(), $('.personal.input.nick').val(), $('.personal.input.pwd').val());
 //         if (result == null) {
 //             alert("에러 발생");
@@ -78,7 +143,7 @@ $(document).ready(function () {
 //         API_DeleteMember(memberId);
 //         location.reload();
 //     });
-        
+
 //     $('.signout-no').on('click', function () {
 //         $('.signout-yes').hide();
 //         $('.signout-no').hide();

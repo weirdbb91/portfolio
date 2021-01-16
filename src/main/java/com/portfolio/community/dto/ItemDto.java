@@ -1,4 +1,4 @@
-package com.portfolio.tryone.dto;
+package com.portfolio.community.dto;
 
 import org.json.JSONObject;
 

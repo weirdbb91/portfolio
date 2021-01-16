@@ -12,7 +12,7 @@ $(document).ready(function () {
             alert('올바른 이메일이 아닙니다.');
             return;
         }
-        var response = API_Login($('.login.input.email').val(), $('.login.input.pwd').val());
+        var response = API_login_POST_Login($('.login.input.email').val(), $('.login.input.pwd').val());
 
         $('.login.input.pwd').val('');
         if (response == -1) {
@@ -27,12 +27,8 @@ $(document).ready(function () {
             logAppend(`[API 답변] 없는 이메일`);
             alert('없는 이메일입니다.');
             return;
-        }      
-        memberId = response;
-        $('.login').attr('disabled', 'disabled');
-        logAppend(`[API 답변] 로그인 정보 일치 ${memberId}번 회원으로 로그인`);
-        $('.member-id').val(memberId);        
-        alert('로그인되었습니다.');
+        }
+        login(response);
     });
 
     // 임시 암호 요청
@@ -45,7 +41,7 @@ $(document).ready(function () {
             return;
         }
 
-        var tempPassword = API_SendCode($('.login.input.email').val(), "임시 암호");
+        var tempPassword = API_verify_POST_SendCode($('.login.input.email').val(), "임시 암호");
 
         if (tempPassword.length == 6) {            
             logAppend(`[API 답변] 전송 완료`);
@@ -54,8 +50,8 @@ $(document).ready(function () {
             return;
         }
 
-        $('.sign.email.input').val('');
-        $('.sign.email.input').focus();
+        $('.login.email.input').val('');
+        $('.login.email.input').focus();
 
         if (tempPassword.indexOf("[Info]") != -1) {
             logAppend(`[API 답변] 가입되지 않은 이메일`);
@@ -68,4 +64,28 @@ $(document).ready(function () {
             return;
         }
     });
+
+    $('.logout').on('click', function () {
+        logout();
+    });
 });
+
+function login(response) {
+    memberId = response;
+    $('.login').attr('disabled', 'disabled');
+    logAppend(`[API 답변] 로그인 정보 일치 ${memberId}번 회원으로 로그인`);
+    $('.member-id').val(memberId);
+    $('.logout').removeAttr('disabled');
+    $('.board-new').removeAttr('disabled');
+    // alert('로그인되었습니다.');
+}
+
+function logout() {
+    memberId = 0;
+    $('.member-id').val('');
+    $('.login.email.input').val('');
+    $('.login').removeAttr('disabled');
+    $('.logout').attr('disabled', 'disabled');
+    $('.board-new').attr('disabled', 'disabled');
+    logAppend(`로그아웃`);
+}
