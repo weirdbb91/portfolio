@@ -12,7 +12,7 @@
 
 <body>
     <!-- 게시판 시작 -->
-    <div class="position-absolute border border-5" style="width: 100%; height: 100%; ">
+    <div class="position-absolute border border-5" style="width: 100%; height: 100%; overflow: auto;">
         <div class="input-group mb-3 p-1 vert">
             <button type="button" disabled class="btn">백승호 포폴</button>
             <button type="button" disabled class="btn board-title">
@@ -30,74 +30,51 @@
             <button type="button" disabled class="btn board-creator">
                 <!-- 첫번째 게시판 작성자 닉 -->
             </button>
+            <button class="board-update btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-modal">수정</button>
+            <button class="board-delete btn btn-outline-secondary" type="button">삭제</button>
         </div>
 
 
         <!-- 게시판 본문 -->
-        <div class="vert board-box p-3" style="width: 100%; height: max-content; background-color: beige;">
+        <div class="vert board-box p-3" style="width: 100%; height: max-content;">
             <div class="col-10 board-content" style="height: 100%;">게시판 설명</div>
             <br>
-            <div class="col-10 board-post" style="height: 100%; background-color: pink;">현재 게시글</div>
+            <div class="col-10 board-post border border-1" style="height: 100%;">현재 게시글</div>
             <br>
             <div class="input-group mb-3">
-                <button class="post-new btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-post-modal">글쓰기</button>
-                <button class="post-update btn btn-outline-secondary" type="button">수정</button>
+                <button class="post-new btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-modal">글쓰기</button>
+                <button class="post-update btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-modal">수정</button>
                 <button class="post-delete btn btn-outline-secondary" type="button">삭제</button>
             </div>
             <br>
             <div class="input-group mb-3">
                 <div class="board-title"></div>&nbsp게시판 게시글 목록
             </div>
-            <div class="col-10 board-post-list" style="height: 100%; background-color: skyblue;">게시글 목록</div>
+            <div class="col-10 board-post-list" style="height: 100%;">게시글 목록</div>
 
         </div>
     </div>
     <!-- 게시판 끝 -->
 
-    <!-- 새 게시판 Modal -->
-    <div class="modal fade" id="new-board-modal" tabindex="-1" aria-labelledby="new-board-modalLabel"
-        aria-hidden="true">
+    <!-- 새 Modal -->
+    <div class="modal fade" id="new-modal" tabindex="-1" aria-labelledby="new-modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="input-group mb-3">
-                        <span class="community new-board-name title input-group-text">Name</span>
-                        <input class="community new-board-name input form-control" type="text" placeholder="게시판 이름"
+                        <span class="community new-name title input-group-text">Name</span>
+                        <input class="community new-name input form-control" type="text" placeholder="제목"
                             aria-label="Text" aria-describedby="input-Text">
                     </div>
                     <div class="input-group mb-3">
-                        <span class="community new-board-content title input-group-text">Content</span>
-                        <input class="community new-board-content input form-control" type="text" placeholder="설명"
-                            aria-label="Text" aria-describedby="input-Text">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-primary new-board-yes" data-bs-dismiss="modal">확인</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 새 글 Modal -->
-    <div class="modal fade" id="new-post-modal" tabindex="-1" aria-labelledby="new-post-modalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="community new-post-name title input-group-text">Name</span>
-                        <input class="community new-post-name input form-control" type="text" placeholder="제목"
-                            aria-label="Text" aria-describedby="input-Text">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="community new-post-content title input-group-text">Content</span>
-                        <textarea class="community new-post-content input form-control" type="text" placeholder="내용"
+                        <span class="community new-content title input-group-text">Content</span>
+                        <textarea class="community new-content input form-control" type="text" placeholder="내용"
                             aria-label="Text" aria-describedby="input-Text"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-primary new-post-yes" data-bs-dismiss="modal">확인</button>
+                    <button type="button" class="btn btn-primary new-yes" data-bs-dismiss="modal">확인</button>
                 </div>
             </div>
         </div>

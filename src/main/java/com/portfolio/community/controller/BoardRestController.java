@@ -44,8 +44,9 @@ public class BoardRestController {
     @Transactional
     @PutMapping("/api/boards")
     public Long updateBoard(@RequestBody Map<String, Object> param) {
-        System.out.println(param.toString());
-        Board Board = BoardRepository.findById((Long) param.get("id")).get();
+        System.out.println(param.toString());        
+        int id = (int) param.get("id");
+        Board Board = BoardRepository.findById((long) id).get();
         return Board.update(param);
     }
     

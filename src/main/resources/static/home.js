@@ -149,6 +149,34 @@ function API_members_nicks_GET_GetNicks() {
 }
 
 
+
+
+// posts
+function API_posts_POST_PostPost(memberId, boardId, title, content, status) {
+    var request = { "memberId": memberId, "boardId": boardId, "title": title, "content": content, "status": status };
+    logAppend(`[API - post-post] request : ${JSON.stringify(request)}`);
+    return API_JSON_Body("POST", "/api/posts", request);
+}
+
+function API_posts_GET_GetPostListByBoardId(boardId) {
+    logAppend(`[API - post-getPostsByBoardId] boardId = ${boardId}`);
+    return API_Params("GET", `/api/posts/${boardId}`);
+}
+
+function API_posts_PUT_UpdatePost(id, title, content, status) {
+    var request = { "id": id, "title": title, "content": content, "status": status };
+    logAppend(`[API - post-update] request : ${JSON.stringify(request)}`);
+    return API_JSON_Body("PUT", "/api/posts", request);
+}
+
+function API_posts_DELETE_DeletePost(id) {
+    logAppend(`[API - post-deletePost] id = ${id}`);
+    return API_Params("DELETE", `/api/posts?id=${id}`);
+}
+
+
+
+
 // boards
 function API_boards_POST_PostBoard(memberId, title, content, status) {
     var request = { "memberId": memberId, "title": title, "content": content, "status": status };
@@ -166,8 +194,8 @@ function API_boards_GET_GetBoardById(id) {
     return API_Params("GET", `/api/boards/${id}`);
 }
 
-function API_boards_PUT_UpdateBoard(boardId, title, memberId, status, content) {
-    var request = { "boardId": boardId, "title": title, "memberId": memberId, "status": status, "content": content };
+function API_boards_PUT_UpdateBoard(id, title, content, status) {
+    var request = { "id": id, "title": title, "content": content, "status": status };
     logAppend(`[API - board-update] request : ${JSON.stringify(request)}`);
     return API_JSON_Body("PUT", "/api/boards", request);
 }
