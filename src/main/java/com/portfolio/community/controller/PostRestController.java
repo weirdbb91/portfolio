@@ -2,7 +2,6 @@ package com.portfolio.community.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.portfolio.community.models.Post;
 import com.portfolio.community.models.PostRepository;
@@ -27,7 +26,6 @@ public class PostRestController {
     
     @PostMapping("/api/posts")
     public Post postPost(@RequestBody Map<String, Object> param) {
-        System.out.println(param.toString());
         return PostRepository.save(new Post(param));
     }
     
@@ -39,7 +37,6 @@ public class PostRestController {
     @Transactional
     @PutMapping("/api/posts")
     public Long updatePost(@RequestBody Map<String, Object> param) {
-        System.out.println(param.toString());        
         int id = (int) param.get("id");
         Post Post = PostRepository.findById((long) id).get();
         return Post.update(param);

@@ -7,7 +7,6 @@ $(document).ready(function () {
     // 이메일 확인
     $('.sign.email.btn').on('click', function () {
         if (!validateEmail($('.sign.email.input').val())) {
-            logAppend(`이메일 부적합`);
             alert('올바른 이메일이 아닙니다.');
             return;
         }
@@ -15,7 +14,6 @@ $(document).ready(function () {
         // 인증번호 전송 - 인증번호 잠금 해제
         if (!$('.sign.email.input').attr('disabled')) {
             // [서버로 이메일 전송]
-            logAppend($('.input.email').val() + `로 인증번호 발신 요청`);
             verifyCode = API_verify_POST_SendCode($('.input.email').val(), "인증 번호");
 
 
@@ -33,27 +31,16 @@ $(document).ready(function () {
             $('.sign.email.input').focus();
 
             if (verifyCode.indexOf("[Info]") != -1) {
-                logAppend(`[API 답변] 이미 가입된 이메일`);
                 alert('이미 가입된 이메일입니다');
                 return;
             }
             if (verifyCode.indexOf("[Error]") != -1) {
-                logAppend(`[API 답변] 에러 발생`);
                 alert('에러 발생');
                 return;
             }
-        } else {
-            // 이메일 변경
-            logAppend(`[입력 정보, 인증번호 초기화]`);
-            verifyCode = "";
-            $('.sign.input').val('');
-            $('.sign').removeClass('passed');
-            $('.sign').attr('disabled', 'disabled');
-
-            $('.sign.email').removeAttr('disabled');
-            $('.sign.email.btn').text('인증번호 전송');
-            $('.sign.email.input').focus();
         }
+        // 이메일 변경
+        signupReset();
     });
 
     // 인증번호 입력
@@ -96,5 +83,19 @@ $(document).ready(function () {
         var response = API_members_POST_Join($('.input.email').val(), $('.input.pwd').val());
         logAppend(`[API 답변] 회원번호 ${response.id}번 회원으로 가입 성공`);
         alert('가입되었습니다.');
+        signupReset();
     });
 })
+
+function signupReset() {
+    logAppend(`[입력 정보, 인증번호 초기화]`);
+    verifyCode = "";
+    $('.sign.input').val('');
+    $('.sign').removeClass('passed');
+    $('.sign').attr('disabled', 'disabled');
+
+    $('.sign.email').removeAttr('disabled');
+    $('.sign.email.btn').text('인증번호 전송');
+    $('.sign.email.input').focus();
+}
+    

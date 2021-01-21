@@ -33,7 +33,6 @@ $(document).ready(function () {
 
     // 임시 암호 요청
     $('.findpwd').on('click', function () {
-        logAppend($('.login.input.email').val() + ` 임시 암호 발신 요청`);
         // 이메일 확인
         if (!validateEmail($('.login.email.input').val())) {
             logAppend(`이메일 부적합`);
@@ -46,7 +45,7 @@ $(document).ready(function () {
         if (tempPassword.length == 6) {            
             logAppend(`[API 답변] 전송 완료`);
             alert('이메일로 전송되었습니다.');
-            API_Update($('.login.input.email').val(), null, tempPassword);
+            API_members_PUT_Update($('.login.input.email').val(), null, tempPassword);
             return;
         }
 
@@ -54,12 +53,10 @@ $(document).ready(function () {
         $('.login.email.input').focus();
 
         if (tempPassword.indexOf("[Info]") != -1) {
-            logAppend(`[API 답변] 가입되지 않은 이메일`);
             alert('가입되지 않은 이메일입니다');
             return;
         }
         if (tempPassword.indexOf("[Error]") != -1) {
-            logAppend(`[API 답변] 에러 발생`);
             alert('에러 발생');
             return;
         }
@@ -77,6 +74,16 @@ function login(response) {
     $('.member-id').val(memberId);
     $('.logout').removeAttr('disabled');
     $('.board-new').removeAttr('disabled');
+    $('.post-new').removeAttr("disabled");
+
+    if (memberId == currentBoard.memberId) {
+        $('.board-update').removeAttr("disabled");
+        $('.board-delete').removeAttr("disabled");
+    }
+    if (memberId == currentPost.memberId) {
+        $('.post-update').removeAttr("disabled");
+        $('.post-delete').removeAttr("disabled");
+    }
     // alert('로그인되었습니다.');
 }
 
@@ -87,5 +94,10 @@ function logout() {
     $('.login').removeAttr('disabled');
     $('.logout').attr('disabled', 'disabled');
     $('.board-new').attr('disabled', 'disabled');
+    $('.board-update').attr('disabled', 'disabled');
+    $('.board-delete').attr('disabled', 'disabled');
+    $('.post-new').attr('disabled', 'disabled');
+    $('.post-update').attr('disabled', 'disabled');
+    $('.post-delete').attr('disabled', 'disabled');
     logAppend(`로그아웃`);
 }

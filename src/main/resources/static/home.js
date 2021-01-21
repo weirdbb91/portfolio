@@ -5,11 +5,16 @@ $(document).ready(function () {
     $('#more-api').append($('#api-table'));
     $('#more-review').append($('.review-function'));
 
+    $('.review-function').hide();
+    $('.finished-review').show();
 
     // API 문서, 후기 필터링
     $('#home-tab').on('click', function () {
+        logAppend('All API Docs, finished review init');
         $('.api-table').show();
         $('.review-function').hide();
+
+        $('.finished-review').show();
     });
 
     // 회원가입
@@ -42,7 +47,7 @@ $(document).ready(function () {
         $('.api-table').hide();
         $('.review-function').hide();
 
-        logAppend('login API Docs, review init');
+        logAppend('personal info API Docs, review init');
         $('.member-getMember').show();
         $('.member-update').show();
         $('.member-delete').show();
@@ -56,9 +61,18 @@ $(document).ready(function () {
         $('.review-function').hide();
 
         logAppend('community API Docs, review init');
-        // $('.member-getMember').show();
-        // $('.member-update').show();
-        // $('.member-delete').show();
+        $('.member-getMember').show();
+
+        $('.board-post').show();
+        $('.board-getBoards').show();
+        $('.board-getBoardById').show();
+        $('.board-update').show();
+        $('.board-DeleteBoard').show();
+
+        $('.post-post').show();
+        $('.post-getPostListByBoardId').show();
+        $('.post-update').show();
+        $('.post-DeletePost').show();
 
         $('.community-review').show();
     });
@@ -89,6 +103,9 @@ function API_JSON_Body(type, url, request) {
             result = response;
         }
     });
+    if (result.length != 6) {
+        logAppend(`[API - response] : ${JSON.stringify(result)}`);
+    }
     return result;
 }
 
@@ -102,6 +119,7 @@ function API_Params(type, url) {
             result = response;
         }
     });
+    logAppend(`[API - response] : ${JSON.stringify(result)}`);
     return result;
 }
 
@@ -121,8 +139,8 @@ function API_login_POST_Login(email, password) {
 
 
 // members
-function API_members_POST_Join(email, pwd) {
-    var request = { "email": email, "password": pwd };
+function API_members_POST_Join(email, password) {
+    var request = { "email": email, "password": password };
     logAppend(`[API - member-join] request : ${JSON.stringify(request)}`);
     return API_JSON_Body("POST", "/api/members", request);
 }
@@ -151,6 +169,38 @@ function API_members_nicks_GET_GetNicks() {
 
 
 
+
+// boards
+function API_boards_POST_PostBoard(memberId, title, content, status) {
+    var request = { "memberId": memberId, "title": title, "content": content, "status": status };
+    logAppend(`[API - board-post] request : ${JSON.stringify(request)}`);
+    return API_JSON_Body("POST", "/api/boards", request);
+}
+
+function API_boards_GET_GetBoardList() {
+    logAppend(`[API - board-getBoardList]`);
+    return API_Params("GET", "/api/boards");
+}
+
+function API_boards_GET_GetBoardById(id) {
+    logAppend(`[API - board-getBoardById] id = ${id}`);
+    return API_Params("GET", `/api/boards/${id}`);
+}
+
+function API_boards_PUT_UpdateBoard(id, title, content, status) {
+    var request = { "id": id, "title": title, "content": content, "status": status };
+    logAppend(`[API - board-update] request : ${JSON.stringify(request)}`);
+    return API_JSON_Body("PUT", "/api/boards", request);
+}
+
+function API_boards_DELETE_DeleteBoard(id) {
+    logAppend(`[API - board-deleteBoard] id = ${id}`);
+    return API_Params("DELETE", `/api/boards?id=${id}`);
+}
+
+
+
+
 // posts
 function API_posts_POST_PostPost(memberId, boardId, title, content, status) {
     var request = { "memberId": memberId, "boardId": boardId, "title": title, "content": content, "status": status };
@@ -172,36 +222,5 @@ function API_posts_PUT_UpdatePost(id, title, content, status) {
 function API_posts_DELETE_DeletePost(id) {
     logAppend(`[API - post-deletePost] id = ${id}`);
     return API_Params("DELETE", `/api/posts?id=${id}`);
-}
-
-
-
-
-// boards
-function API_boards_POST_PostBoard(memberId, title, content, status) {
-    var request = { "memberId": memberId, "title": title, "content": content, "status": status };
-    logAppend(`[API - board-post] request : ${JSON.stringify(request)}`);
-    return API_JSON_Body("POST", "/api/boards", request);
-}
-
-function API_boards_GET_GetBoards() {
-    logAppend(`[API - board-getBoards]`);
-    return API_Params("GET", "/api/boards");
-}
-
-function API_boards_GET_GetBoardById(id) {
-    logAppend(`[API - board-getBoardById] id = ${id}`);
-    return API_Params("GET", `/api/boards/${id}`);
-}
-
-function API_boards_PUT_UpdateBoard(id, title, content, status) {
-    var request = { "id": id, "title": title, "content": content, "status": status };
-    logAppend(`[API - board-update] request : ${JSON.stringify(request)}`);
-    return API_JSON_Body("PUT", "/api/boards", request);
-}
-
-function API_boards_DELETE_DeleteBoard(id) {
-    logAppend(`[API - board-deleteBoard] id = ${id}`);
-    return API_Params("DELETE", `/api/boards?id=${id}`);
 }
 

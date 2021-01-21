@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.portfolio.community.dto.MemberDto;
 import com.portfolio.community.models.Member;
 import com.portfolio.community.models.MemberRepository;
 import com.portfolio.community.services.MemberService;
@@ -37,14 +38,13 @@ public class MemberRestController {
     }
     
     @GetMapping("/api/members")
-    public Member getMember(@RequestParam Long id) {
-        return memberRepository.findById(id).get();
+    public MemberDto getMember(@RequestParam Long id) {
+        return new MemberDto(memberRepository.findById(id).orElse(memberRepository.findById(0L).get()));
     }
     
     @Transactional
     @PutMapping("/api/members")
     public Long update(@RequestBody Map<String, Object> param) {
-        System.out.println(param.toString());
         Member member = memberRepository.findByEmail((String) param.get("email"));
         return member.update(param);
     }

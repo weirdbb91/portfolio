@@ -26,13 +26,11 @@ public class BoardRestController {
     
     @PostMapping("/api/boards")
     public Board postBoard(@RequestBody Map<String, Object> param) {
-        System.out.println(param.toString());
         return BoardRepository.save(new Board(param));
     }
     
     @GetMapping("/api/boards")
     public List<Board> getBoards() {
-        System.out.println("getBoards started");
         return BoardRepository.findAll();
     }
 
@@ -44,7 +42,6 @@ public class BoardRestController {
     @Transactional
     @PutMapping("/api/boards")
     public Long updateBoard(@RequestBody Map<String, Object> param) {
-        System.out.println(param.toString());        
         int id = (int) param.get("id");
         Board Board = BoardRepository.findById((long) id).get();
         return Board.update(param);

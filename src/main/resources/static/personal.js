@@ -1,5 +1,5 @@
 // 3번째 포폴 기능 - 회원정보
-var member;
+var member = null;
 
 $(document).ready(function () {
     logAppend('personal function loaded');
@@ -39,7 +39,6 @@ $(document).ready(function () {
             // 닉 중복 확인
             var nicks = API_members_nicks_GET_GetNicks();
             for (var i = 0; i < nicks.length; i += 1) {
-                logAppend("닉네임 비교중 " + nicks[i]);
                 if (requestNick == nicks[i] && member.nick != nicks[i]) {
                     alert("이미 사용중인 닉네임 입니다");
                     return;
@@ -61,7 +60,7 @@ $(document).ready(function () {
     });
 
     $('.signout-yes').on('click', function () {
-        // API_DeleteMember(memberId);
+        API_members_DELETE_DeleteMember(memberId);
         logout();
         $('.personal.input').val('');
         $('.personal').attr('disabled', 'disabled');

@@ -12,8 +12,8 @@
 
 <body>
     <!-- 게시판 시작 -->
-    <div class="position-absolute border border-5" style="width: 100%; height: 100%; overflow: auto;">
-        <div class="input-group mb-3 p-1 vert">
+    <div class="position-absolute" style="width: 100%; height: 100%; overflow: auto;">
+        <div class="input-group mb-1 p-1 vert">
             <button type="button" disabled class="btn">백승호 포폴</button>
             <button type="button" disabled class="btn board-title">
                 <!-- 첫번째 게시판 이름 -->
@@ -26,12 +26,17 @@
                     <!-- 게시판 리스트 -->
                 </ul>
             </div>
+        </div>
+        <div class="input-group mb-1 p-1 vert">
             <button type="button" disabled class="btn">작성자</button>
             <button type="button" disabled class="btn board-creator">
                 <!-- 첫번째 게시판 작성자 닉 -->
             </button>
-            <button class="board-update btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-modal">수정</button>
-            <button class="board-delete btn btn-outline-secondary" type="button">삭제</button>
+        </div>
+        <div class="input-group mb-1 p-1 vert">
+            <button class="post-new btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-modal" disabled="disabled">글쓰기</button>
+            <button class="board-update btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-modal" disabled="disabled">수정</button>
+            <button class="board-delete btn btn-outline-secondary" type="button" disabled="disabled">삭제</button>
         </div>
 
 
@@ -39,15 +44,9 @@
         <div class="vert board-box p-3" style="width: 100%; height: max-content;">
             <div class="col-10 board-content" style="height: 100%;">게시판 설명</div>
             <br>
-            <div class="col-10 board-post border border-1" style="height: 100%;">현재 게시글</div>
+            <div class="col-10 board-post-content border border-1" style="height: 100%;">현재 게시글</div>
             <br>
-            <div class="input-group mb-3">
-                <button class="post-new btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-modal">글쓰기</button>
-                <button class="post-update btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#new-modal">수정</button>
-                <button class="post-delete btn btn-outline-secondary" type="button">삭제</button>
-            </div>
-            <br>
-            <div class="input-group mb-3">
+            <div class="input-group mb-1">
                 <div class="board-title"></div>&nbsp게시판 게시글 목록
             </div>
             <div class="col-10 board-post-list" style="height: 100%;">게시글 목록</div>
@@ -61,12 +60,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-1">
                         <span class="community new-name title input-group-text">Name</span>
                         <input class="community new-name input form-control" type="text" placeholder="제목"
                             aria-label="Text" aria-describedby="input-Text">
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-1">
                         <span class="community new-content title input-group-text">Content</span>
                         <textarea class="community new-content input form-control" type="text" placeholder="내용"
                             aria-label="Text" aria-describedby="input-Text"></textarea>

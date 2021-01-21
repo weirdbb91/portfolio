@@ -15,4 +15,10 @@ $(document).ready(function () {
     $("#login").load("login.html");
     $("#personal").load("personal.html");
     $("#community").load("community.html");
+
+    $(window).resize(function () {
+        if ($(window).width() > 768) {
+            
+        }
+    });
 })
