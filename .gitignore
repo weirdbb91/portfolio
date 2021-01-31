@@ -1,1 +1,9 @@
 SSL_Certificate/
+community/lamb/.gitignore
+community/lamb/build.gradle
+community/lamb/gradlew
+community/lamb/gradlew.bat
+community/lamb/settings.gradle
+community/lamb/gradle/wrapper/gradle-wrapper.jar
+community/lamb/gradle/wrapper/gradle-wrapper.properties
+community/lamb/src/main/resources/application.properties
