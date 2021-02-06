@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/common :: head('board_list')"></head>
+
+<body>
+<nav th:replace="fragments/common :: nav_bar('board_list')"></nav>
+
+<div class="container">
+    <h2>게시판</h2>
+    <div>총 건수 : <span th:text="${#lists.size(boards)}"></span></div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">내용</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${boards}">
+
+            <th th:text="${board.id}">번호</th>
+            <th><a th:href="@{form(id=${board.id})}" th:text="${board.title}">제목</a></th>
+            <th th:text="${board.content}">내용</th>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        <a type="button" class="btn btn-primary" th:href="@{form}">글 쓰기</a>
+    </div>
+</div>
+
+
+</body>
+
+</html>
