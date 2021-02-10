@@ -1,13 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+<head th:replace="fragments/common :: head('greeting')"></head>
 
 <body>
-    <p th:text="'Hello, ' + ${name} + '!'" />람쥐썬더</p>
+<nav th:replace="fragments/common :: nav_bar('greeting')"></nav>
+
+<p th:text="'Hello, ' + ${name} + '!'"/>람쥐썬더</p>
+
+
 </body>
 
 </html>
