@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/common :: head('Login')">헤드, 타이틀</head>
+
+<body class="text-center">
+    <div th:replace="fragments/common :: background"/>
+    <nav th:replace="fragments/common :: nav_bar('Login')">네비게이션 바</nav>
+
+    <form class="form-signin w-50 m-auto my-5 p-5 bg-white border border-secondary rounded" th:action="@{/account/login}" method="POST"
+          style="max-width: 300px">
+        <img class="mb-4" src="http://drive.google.com/uc?export=view&id=1o9y1Ru-GX3ShEDk2SIUhbw9oSd00b6ug" alt="logo" width="179" height="228">
+        <h1 class="h3 mb-3 fw-normal">Please login</h1>
+        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-primary" role="alert">
+            You have been logged out.
+        </div>
+        <label for="username" class="visually-hidden">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+        <label for="inputPassword" class="visually-hidden">Password</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
+<!--        <div class="checkbox mb-3">-->
+<!--            <label>-->
+<!--                <input type="checkbox" value="remember-me"> Remember me-->
+<!--            </label>-->
+<!--        </div>-->
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <p class="mt-5 mb-3 text-muted">© 2021-2021</p>
+    </form>
+</body>
+
+</html>

@@ -1,20 +1,106 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <!-- Param ( title : title) , Func ( meta tags, Bootstrap, css import ) -->
 <head th:fragment="head(title)">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="starter-template.css" th:href="@{/starter-template.css}">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
 
-    <title th:text="${title}">Hello, world!</title>
+    <link rel="stylesheet" href="starter-template.css" th:href="@{/css/starter-template.css}">
+
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <title th:text="${title}">포트폴리오 - Hello, world!</title>
+
+    <style>
+        @font-face {
+            font-family: 'paybooc-Bold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: paybooc-Bold;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
+<div th:fragment="background">
+    <div style="position: absolute; bottom: 0; right: 0; z-index: -3;"><img src="http://drive.google.com/uc?export=view&id=1yT8ZCLwjk8QK3QTW_d_Z5oPc5mvrc6jr" alt="happy"></div>
+    <div style="position: absolute; bottom: 0; left: 0; z-index: -3;"><img src="http://drive.google.com/uc?export=view&id=1Xc78ZlIMu6zBpOpbry2BWteOHi1incLT" alt="coffee"></div>
+</div>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light" th:fragment="nav_bar(title)">
+    <div class="container-fluid">
+        <span class="navbar-brand">포트폴리오</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/board/list" th:href="@{/board/list}">Board</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Contact
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><span class="dropdown-item-text">백승호</span></li>
+                        <li><span class="dropdown-item-text" style="font-size: 0.9rem;">010-2214-9292</span></li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a class="dropdown-item" target="_sub" href="https://github.com/weirdbb91">
+                            <i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+
+                        <li><a class="dropdown-item" target="_sub" href="https://www.instagram.com/weirdbb91/">
+                            <i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Thanks</a>
+                </li>
+            </ul>
+
+
+            <a class="btn btn-outline-secondary mx-2" type="submit" th:href="@{/account/login}"
+               sec:authorize="!isAuthenticated()">Login</a>
+
+            <a class="btn btn-outline-secondary mx-2" type="submit" th:href="@{/account/register}"
+               sec:authorize="!isAuthenticated()">Sign in</a>
+
+            <form class="d-flex" th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()">
+                <span class="m-2" sec:authentication="name">User</span>
+                <span class="m-2" sec:authentication="principal.authorities">Roles</span>
+                <button class="btn btn-outline-secondary" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!--내비 구버전-->
+<!--
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:fragment="nav_bar(title)">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Thymeleaf</a>
@@ -40,7 +126,6 @@
                         Greeting
                     </a>
                 </li>
-                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown01">
@@ -49,32 +134,26 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                -->
             </ul>
-            <!--
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+
+            <a class="btn btn-outline-light" type="submit" th:href="@{/account/login}" sec:authorize="!isAuthenticated()">Login</a>
+
+            <form class="d-flex" th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()">
+                <span class="text-white mx-2" sec:authentication="name">User</span>
+                <span class="text-white mx-2" sec:authentication="principal.authorities">Roles</span>
+                <button class="btn btn-outline-light" type="submit">Logout</button>
             </form>
-            -->
         </div>
     </div>
 </nav>
+-->
 
-<main class="container">
-
-    <div class="starter-template text-center py-5 px-3">
-        <h1>Spring Boot Tutorial</h1>
-        <p class="lead">Spring Boot, Spring Security, Spring Thymeleaf, JPA</p>
-    </div>
-
-</main><!-- /.container -->
-
-
+<!--부트스트랩 번들-->
+<!-- 부트스트랩 번들
 <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-
+-->
 
 </body>
 
