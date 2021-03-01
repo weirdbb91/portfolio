@@ -26,8 +26,9 @@
 ---
 
 
-## ✍🏻 `진행중` [Community]
+## ✍🏻 `진행중` [Lamb](https://github.com/weirdbb91/lamb) 
 ---
+[저장소 링크](https://github.com/weirdbb91/lamb)  
 
 학습용이 아닌 실제로 이용이 가능한 게시판 서비스
 
@@ -35,7 +36,7 @@
 - Spring Security를 이용한 보안 기능 개선
 - Thymeleaf 활용
 - 네이버 검색 API 활용
-- 네이버 아이디로 로그인
+- ~~네이버 아이디로 로그인~~ + 구글, 깃헙, 페북, 카카오
 
 ---
 ---
